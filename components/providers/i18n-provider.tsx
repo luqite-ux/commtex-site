@@ -1,0 +1,13 @@
+"use client";
+
+import { I18nProvider } from "@/lib/i18n/context";
+import { translations } from "@/lib/i18n/translations";
+import { ReactNode } from "react";
+
+export function I18nProviderWrapper({ children }: { children: ReactNode }) {
+  return (
+    <I18nProvider translations={translations}>
+      {children}
+    </I18nProvider>
+  );
+}

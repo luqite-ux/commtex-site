@@ -1,0 +1,116 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { useI18n } from "@/lib/i18n/context";
+
+export function Footer() {
+  const { t } = useI18n();
+  return (
+    <footer className="bg-foreground text-background">
+      <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-block">
+              <Image
+                src="/images/logo.png"
+                alt="Commtex - Companion Matrix Textile"
+                width={180}
+                height={60}
+                className="h-14 w-auto brightness-0 invert"
+              />
+            </Link>
+            <p className="mt-4 text-background/70 text-sm leading-relaxed">
+              {t("footer.description")}
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-serif text-lg font-medium mb-6">{t("footer.quickLinks")}</h4>
+            <ul className="space-y-3">
+              {[
+                { href: "/", label: t("nav.home") },
+                { href: "/about", label: t("nav.about") },
+                { href: "/products", label: t("nav.products") },
+                { href: "/news", label: t("nav.news") },
+                { href: "/contact", label: t("nav.contact") },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-background/70 text-sm transition-colors duration-300 hover:text-background"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h4 className="font-serif text-lg font-medium mb-6">Products</h4>
+            <ul className="space-y-3">
+              {["Wool Fabrics", "Cashmere", "Yak Fiber", "Alpaca", "Silk", "Lyocell"].map((product) => (
+                <li key={product}>
+                  <Link
+                    href="/products"
+                    className="text-background/70 text-sm transition-colors duration-300 hover:text-background"
+                  >
+                    {product}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-serif text-lg font-medium mb-6">{t("footer.contact")}</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-background/70 mt-0.5 shrink-0" />
+                <span className="text-background/70 text-sm">
+                  Building B, No.16 Shuanghong Road, Haizhou Street, Haining City, Jiaxing, Zhejiang, China
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-background/70 shrink-0" />
+                <a
+                  href="tel:+8619884900913"
+                  className="text-background/70 text-sm transition-colors duration-300 hover:text-background"
+                >
+                  +86 198 8490 0913
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-background/70 shrink-0" />
+                <a
+                  href="mailto:commtex@gocommtex.com"
+                  className="text-background/70 text-sm transition-colors duration-300 hover:text-background"
+                >
+                  commtex@gocommtex.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-16 pt-8 border-t border-background/20">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-background/50 text-sm">
+              &copy; {new Date().getFullYear()} Companion Matrix Textile Technology Co., Ltd. {t("footer.copyright")}
+            </p>
+            <p className="text-background/50 text-sm">
+              Premium Natural Fiber Fabrics Since 2007
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
