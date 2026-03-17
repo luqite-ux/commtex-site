@@ -91,6 +91,21 @@ export const products: Product[] = [
         title: "Special Colors",
         image: "/images/products/ss250403zs/colors-special.jpg",
         colors: "Star Brown Green/Dusk Grey (Double-faced), Black/Dusk Grey (Double-faced), Rouge Red, Misty Almond/Cloud White (Double-faced)"
+      },
+      {
+        title: "Solid Colors",
+        image: "/images/products/ss250403zs/colors-1.jpg",
+        colors: "Light Beige, Warm Brown, Cloud White (Light), Star Brown Green, Light Coffee, Rouge Red, Morning Sand White (Light), Twilight Purple, Honey Camel, Elegant Purple"
+      },
+      {
+        title: "Dark & Grey Tones",
+        image: "/images/products/ss250403zs/colors-2.jpg",
+        colors: "Deep Coffee, Deep Purple, Light Grey (Light), Navy Blue, Gunmetal Grey, Black Navy, Iron Grey, Origin Black, Dusk Grey, Black/Dusk Grey (Double-faced)"
+      },
+      {
+        title: "Double-faced Options",
+        image: "/images/products/ss250403zs/colors-3.jpg",
+        colors: "Warm Velvet Brown/Almond, Dusk Grey/Cloud White (Light), Brown Coffee/Camel, Star Brown Green/Dusk Grey, Warm Velvet Brown/Cloud White (Light)"
       }
     ]
   },
