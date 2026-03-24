@@ -5,7 +5,7 @@ import { NewsHero } from "@/components/news/news-hero";
 import { NewsList } from "@/components/news/news-list";
 
 export const metadata: Metadata = {
-  title: "News Center | Commtex",
+  title: "Industry Insights | Commtex",
   description: "Stay updated with the latest news, events, and announcements from Commtex - your trusted partner in premium natural fiber fabrics.",
 };
 
