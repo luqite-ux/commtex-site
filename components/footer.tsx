@@ -17,12 +17,13 @@ export function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="Commtex - Companion Matrix Textile"
-                width={180}
-                height={60}
-                className="h-14 w-auto brightness-0 invert"
+                width={200}
+                height={80}
+                className="h-16 w-auto"
+                priority
               />
             </Link>
-            <p className="mt-4 text-background/70 text-sm leading-relaxed">
+            <p className="mt-6 text-background/70 text-sm leading-relaxed">
               {t("footer.description")}
             </p>
           </div>
