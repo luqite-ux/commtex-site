@@ -7,12 +7,15 @@ export interface NewsArticle {
   excerpt: string
   content: string
   cover_image: string
-  published_at: string
+  date: string
   images?: Array<{ src: string; alt: string; caption: string }>
+  created_at: string
+  updated_at: string
 }
 
 export interface Product {
   id: string
+  slug: string
   name: string
   article_number: string
   category: string
@@ -21,6 +24,10 @@ export interface Product {
     name: string
     colors: string[]
   }>
+  specifications: any[]
+  features: any[]
+  created_at: string
+  updated_at: string
 }
 
 export async function getNews(): Promise<NewsArticle[]> {
@@ -29,7 +36,7 @@ export async function getNews(): Promise<NewsArticle[]> {
     const { data } = await supabase
       .from('news')
       .select('*')
-      .order('published_at', { ascending: false })
+      .order('date', { ascending: false })
 
     return data || []
   } catch (error) {
@@ -69,13 +76,13 @@ export async function getProducts(): Promise<Product[]> {
   }
 }
 
-export async function getProductById(id: string): Promise<Product | null> {
+export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
     const supabase = createClient()
     const { data } = await supabase
       .from('products')
       .select('*')
-      .eq('id', id)
+      .eq('slug', slug)
       .single()
 
     return data || null

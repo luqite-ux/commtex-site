@@ -55,7 +55,7 @@ export function NewsList() {
               </div>
               <div className="p-6">
                 <span className="text-muted-foreground text-sm">
-                  {new Date(article.published_at).toLocaleDateString("zh-CN")}
+                  {new Date(article.date).toLocaleDateString("zh-CN")}
                 </span>
                 <h2 className="font-serif text-xl text-foreground font-medium mt-2 mb-3 group-hover:text-accent transition-colors">
                   {article.title}

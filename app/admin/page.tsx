@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -14,6 +15,7 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<AdminStats>({ newsCount: 0, productsCount: 0 })
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<any>(null)
+  const router = useRouter()
   const supabase = createClient()
 
   useEffect(() => {
@@ -22,6 +24,12 @@ export default function AdminDashboard() {
       const {
         data: { user: currentUser },
       } = await supabase.auth.getUser()
+      
+      if (!currentUser) {
+        router.push('/admin/login')
+        return
+      }
+      
       setUser(currentUser)
 
       // Get stats
@@ -38,7 +46,12 @@ export default function AdminDashboard() {
     }
 
     fetchData()
-  }, [])
+  }, [router])
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+    router.push('/admin/login')
+  }
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">加载中...</div>
@@ -53,14 +66,7 @@ export default function AdminDashboard() {
             <h1 className="text-3xl font-bold text-[#8B4513]">Admin Dashboard</h1>
             <p className="text-muted-foreground">欢迎, {user?.email}</p>
           </div>
-          <form
-            action={async () => {
-              'use server'
-              await supabase.auth.signOut()
-            }}
-          >
-            <Button variant="outline">退出登录</Button>
-          </form>
+          <Button onClick={handleLogout} variant="outline">退出登录</Button>
         </div>
       </header>
 
