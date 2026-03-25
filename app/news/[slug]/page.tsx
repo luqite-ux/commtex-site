@@ -10,6 +10,114 @@ import { getNewsArticleBySlug } from "@/lib/news-data";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
+// Simple markdown-like content renderer
+function renderContent(content: string) {
+  const lines = content.split('\n');
+  const elements: React.ReactNode[] = [];
+  let currentParagraph: string[] = [];
+  let inCallout = false;
+  let calloutContent: string[] = [];
+
+  const flushParagraph = () => {
+    if (currentParagraph.length > 0) {
+      const text = currentParagraph.join(' ').trim();
+      if (text) {
+        elements.push(
+          <p key={elements.length} className="text-foreground leading-relaxed mb-6 text-justify">
+            {renderInlineFormatting(text)}
+          </p>
+        );
+      }
+      currentParagraph = [];
+    }
+  };
+
+  const renderInlineFormatting = (text: string): React.ReactNode => {
+    // Handle bold text with **
+    const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className="font-semibold">{part.slice(2, -2)}</strong>;
+      }
+      if (part.startsWith('*') && part.endsWith('*') && !part.startsWith('**')) {
+        return <em key={i} className="italic">{part.slice(1, -1)}</em>;
+      }
+      return part;
+    });
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    
+    // Handle callout blocks
+    if (line.trim() === ':::callout') {
+      flushParagraph();
+      inCallout = true;
+      calloutContent = [];
+      continue;
+    }
+    
+    if (line.trim() === ':::' && inCallout) {
+      // Render callout
+      elements.push(
+        <div key={elements.length} className="border-l-4 border-accent pl-6 py-4 my-8 bg-secondary/30">
+          {renderContent(calloutContent.join('\n'))}
+        </div>
+      );
+      inCallout = false;
+      continue;
+    }
+    
+    if (inCallout) {
+      calloutContent.push(line);
+      continue;
+    }
+
+    // Handle horizontal rule
+    if (line.trim() === '---') {
+      flushParagraph();
+      elements.push(<hr key={elements.length} className="my-12 border-border" />);
+      continue;
+    }
+
+    // Handle headings
+    if (line.startsWith('### ')) {
+      flushParagraph();
+      const headingText = line.slice(4);
+      elements.push(
+        <h3 key={elements.length} className="font-serif text-xl md:text-2xl text-foreground font-semibold mt-10 mb-4 leading-tight">
+          {headingText}
+        </h3>
+      );
+      continue;
+    }
+
+    if (line.startsWith('## ')) {
+      flushParagraph();
+      const headingText = line.slice(3);
+      elements.push(
+        <h2 key={elements.length} className="font-serif text-2xl md:text-3xl text-[#8B4513] font-semibold mt-12 mb-6 leading-tight">
+          {headingText}
+        </h2>
+      );
+      continue;
+    }
+
+    // Handle empty lines
+    if (line.trim() === '') {
+      flushParagraph();
+      continue;
+    }
+
+    // Regular text - add to current paragraph
+    currentParagraph.push(line);
+  }
+
+  flushParagraph();
+  
+  return elements;
+}
+
 export default function NewsArticlePage() {
   const params = useParams();
   const slug = params.slug as string;
@@ -51,7 +159,7 @@ export default function NewsArticlePage() {
               {article.date}
             </span>
             <h1
-              className={`font-serif text-3xl md:text-4xl lg:text-5xl text-foreground font-medium mt-4 mb-6 leading-tight transition-all duration-700 delay-200 ${
+              className={`font-serif text-3xl md:text-4xl lg:text-5xl text-[#8B4513] font-medium mt-4 mb-6 leading-tight transition-all duration-700 delay-200 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
@@ -66,13 +174,13 @@ export default function NewsArticlePage() {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
             {/* Article Content */}
-            <p
-              className={`text-foreground text-lg leading-relaxed mb-12 transition-all duration-700 delay-300 ${
+            <article
+              className={`prose prose-lg max-w-none transition-all duration-700 delay-300 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              {article.content}
-            </p>
+              {renderContent(article.content)}
+            </article>
 
             {/* Image Gallery */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
