@@ -3,13 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { getAllNewsArticles } from "@/lib/news-data";
 import { ArrowRight } from "lucide-react";
+import useSWR from "swr";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export function NewsList() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const articles = getAllNewsArticles();
+  const { data: articles = [] } = useSWR("/api/news", fetcher);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,7 +34,7 @@ export function NewsList() {
     <section ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
+          {articles.map((article: any, index: number) => (
             <Link
               key={article.id}
               href={`/news/${article.slug}`}
@@ -45,7 +47,7 @@ export function NewsList() {
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
-                  src={article.coverImage || "/placeholder.svg"}
+                  src={article.cover_image || "/placeholder.svg"}
                   alt={article.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -53,7 +55,7 @@ export function NewsList() {
               </div>
               <div className="p-6">
                 <span className="text-muted-foreground text-sm">
-                  {article.date}
+                  {new Date(article.published_at).toLocaleDateString("zh-CN")}
                 </span>
                 <h2 className="font-serif text-xl text-foreground font-medium mt-2 mb-3 group-hover:text-accent transition-colors">
                   {article.title}

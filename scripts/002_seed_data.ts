@@ -1,11 +1,69 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
-const newsData = [
+async function seedDatabase() {
+  try {
+    console.log('Starting data migration...')
+
+    // Insert news articles
+    console.log('Inserting news articles...')
+    const { error: newsError } = await supabase.from('news').insert([
+      {
+        slug: '2026-cashmere-color-trends',
+        title: 'Tactile Blank Space & Emotional Spectrum: An In-Depth Analysis of 2026 Cashmere Industry Color Trends',
+        excerpt: 'After Pantone named Cloud Dancer as the 2026 Color of the Year, the global fashion scene has embraced a shift toward quiet, texture-driven elegance.',
+        content: newsData[0].content,
+        cover_image: '/images/news/2026-cashmere-trends/cover.jpg',
+        published_at: '2026-03-01'
+      },
+      {
+        slug: '2025-annual-celebration',
+        title: 'A Night to Remember: Commtex Teams Gather for 2025 Annual Festivities',
+        excerpt: 'At Commtex, we believe that our strength lies in the vibrant, dedicated team behind our success.',
+        content: newsData[1].content,
+        cover_image: '/images/news/2025-annual/05-big-family.jpg',
+        published_at: '2025-01-15'
+      }
+    ])
+
+    if (newsError) {
+      console.error('Error inserting news:', newsError)
+    } else {
+      console.log('✓ News articles inserted successfully')
+    }
+
+    // Insert products
+    console.log('Inserting products...')
+    for (const product of productsData) {
+      const { error } = await supabase.from('products').insert([{
+        id: product.slug,
+        name: product.name,
+        article_number: product.article_number,
+        category: product.category,
+        main_image: product.main_image,
+        specifications: product.specifications,
+        features: product.features,
+        color_categories: product.color_categories,
+        created_at: new Date().toISOString()
+      }])
+
+      if (error) {
+        console.error(`Error inserting product ${product.slug}:`, error)
+      } else {
+        console.log(`✓ Inserted: ${product.name}`)
+      }
+    }
+
+    console.log('✓ Data migration completed successfully!')
+  } catch (error) {
+    console.error('Migration failed:', error)
+    process.exit(1)
+  }
+}
   {
     slug: "2026-cashmere-color-trends",
     title: "Tactile Blank Space & Emotional Spectrum: An In-Depth Analysis of 2026 Cashmere Industry Color Trends",
