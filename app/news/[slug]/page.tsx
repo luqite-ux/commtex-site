@@ -11,7 +11,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
 // Simple markdown-like content renderer
-function renderContent(content: string) {
+function renderContent(content: string, images?: { src: string; alt: string; caption: string }[]) {
   const lines = content.split('\n');
   const elements: React.ReactNode[] = [];
   let currentParagraph: string[] = [];
@@ -46,8 +46,42 @@ function renderContent(content: string) {
     });
   };
 
+  const renderInlineImage = (index: number) => {
+    if (!images || !images[index]) return null;
+    const img = images[index];
+    return (
+      <figure key={`img-${elements.length}`} className="my-8">
+        <div className="relative aspect-[16/10] rounded-lg overflow-hidden">
+          <Image
+            src={img.src || "/placeholder.svg"}
+            alt={img.alt}
+            fill
+            className="object-cover"
+          />
+        </div>
+        {img.caption && (
+          <figcaption className="mt-3 text-center text-sm text-muted-foreground italic">
+            {img.caption}
+          </figcaption>
+        )}
+      </figure>
+    );
+  };
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
+    
+    // Handle inline images ![image](index)
+    const imageMatch = line.trim().match(/^!\[image\]\((\d+)\)$/);
+    if (imageMatch) {
+      flushParagraph();
+      const imageIndex = parseInt(imageMatch[1], 10);
+      const imageElement = renderInlineImage(imageIndex);
+      if (imageElement) {
+        elements.push(imageElement);
+      }
+      continue;
+    }
     
     // Handle callout blocks
     if (line.trim() === ':::callout') {
@@ -61,7 +95,7 @@ function renderContent(content: string) {
       // Render callout
       elements.push(
         <div key={elements.length} className="border-l-4 border-accent pl-6 py-4 my-8 bg-secondary/30">
-          {renderContent(calloutContent.join('\n'))}
+          {renderContent(calloutContent.join('\n'), images)}
         </div>
       );
       inCallout = false;
@@ -179,7 +213,7 @@ export default function NewsArticlePage() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              {renderContent(article.content)}
+              {renderContent(article.content, article.images)}
             </article>
 
             {/* Image Gallery */}

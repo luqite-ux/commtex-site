@@ -35,6 +35,8 @@ This white wave reflects a seismic shift in consumer tastes. After years of info
 
 What's more, this signature white never stands alone on the 2026 fall-winter runways. Anchored by the year's key hue, cashmere color palettes lean fully into "raw, unfiltered authenticity". Take Loro Piana's 2026-2027 Fall-Winter collection, *Nomadic Daydream*, which draws color inspiration straight from oil paintings and natural landscapes: soft apricot, ash gray, and deep chestnut serve as calm foundations, while ochre and terracotta add free-spirited depth. This earth-grown color logic forms the complete 2026 cashmere color spectrum.
 
+![image](0)
+
 ## 2. 2026 Core Cashmere Color Families: Striking the Balance Between Emotion and Texture
 
 Drawing on feedback from the Intertextile Home Textiles Fair, APLF fashion trend forecasts, and Milan designer previews, the 2026 cashmere color trends fall into three core categories. Each aligns perfectly with cashmere's inherent properties, boasts strong practicality for production, and serves as a critical guide for product development.
@@ -45,17 +47,23 @@ This palette is an extension of Cloud Dancer and the leading color direction for
 
 APLF dubs this palette "Resonance of Soft Light Perception"—in short, colors that are gentle, understated, and act as a soft landing for the mind. For cashmere design, this palette is incredibly versatile: midnight blue on woolen cashmere replaces the heaviness of solid black, offering depth without feeling oppressive; terracotta and ochre tap into the rustic, retro charm of the "quiet refuge" trend, creating effortless high-end layers when styled in tonal matches. Best of all, cashmere's plush, buttery texture amplifies the calming power of these hues to the fullest.
 
+![image](1)
+
 ### 2.2 Natural Raw Hues: Undyed Luxury, Returning to Cashmere's True Value
 
 As sustainable fashion takes hold, cashmere color palettes are embracing minimalism. Undyed natural shades—raw cashmere white, sand, and light camel—have secured a major spot in 2026 trends. This is no empty eco-friendly gimmick; it's the industry's re-recognition of cashmere's innate fiber beauty.
 
 The market data speaks for itself: 62% of consumers are willing to buy certified sustainable cashmere products, and undyed natural tones are a visible, tangible mark of ethical integrity. This trend is pushing the cashmere supply chain to evolve: farms must implement meticulous sorting to ensure uniform, pure raw fiber color; designers can no longer rely on bold dyes to stand out, instead using stitch variations—like chunky knits, ribbing, and reverse stockinette—to create light-and-shadow texture within a single tone, keeping "natural cashmere" refined, not plain. This marks a critical shift: cashmere's value is no longer judged by how vibrant the dye is, but by how exceptional the fiber itself is.
 
+![image](2)
+
 ### 2.3 Energy Accent Hues: Restrained Bold Shades That Preserve Cashmere's Luxury
 
 While calm healing defines 2026 cashmere trends, fashion still needs small moments of surprise. Bright shades—vibrant orange-yellow, coral red, sapphire blue, and metallic copper—enter the mix as subtle supporting accents.
 
 Unlike the bold, all-over color blocking of the past, bright hues are used with extreme restraint on cashmere this year, focusing on **micro color blocking** and **hidden lining accents**: think pops of color inside a cashmere sweater's neckline, along pocket edges, or as tiny details in jacquard patterns, never overshadowing cashmere's soft, luxurious texture. Some designers pair cashmere with subtle embellishments like crystals or feather accents to mimic the glint of melting ice, adding personality for younger shoppers without compromising cashmere's refined appeal—brightening without overwhelming.
+
+![image](3)
 
 ## 3. The Industry Logic Behind the Trends: Color as a Core Strategic Pillar for Cashmere
 
