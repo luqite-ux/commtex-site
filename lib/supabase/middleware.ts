@@ -41,8 +41,18 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
+  const pathname = request.nextUrl.pathname
+  
+  // Public admin routes that don't require authentication
+  const isPublicAdminRoute = 
+    pathname === '/admin/login' || 
+    pathname === '/admin/sign-up' || 
+    pathname === '/admin/sign-up-success'
+
+  // If user is NOT logged in and tries to access protected admin routes
   if (
-    request.nextUrl.pathname.startsWith('/admin') &&
+    pathname.startsWith('/admin') &&
+    !isPublicAdminRoute &&
     !user
   ) {
     const url = request.nextUrl.clone()
@@ -50,8 +60,8 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // If logged in user visits /admin/login, redirect to dashboard
-  if (request.nextUrl.pathname === '/admin/login' && user) {
+  // If logged in user visits login/sign-up pages, redirect to dashboard
+  if (isPublicAdminRoute && user) {
     const url = request.nextUrl.clone()
     url.pathname = '/admin'
     return NextResponse.redirect(url)
