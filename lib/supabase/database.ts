@@ -32,7 +32,7 @@ export interface Product {
 
 export async function getNews(): Promise<NewsArticle[]> {
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     const { data } = await supabase
       .from('news')
       .select('*')
@@ -47,7 +47,7 @@ export async function getNews(): Promise<NewsArticle[]> {
 
 export async function getNewsBySlug(slug: string): Promise<NewsArticle | null> {
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     const { data } = await supabase
       .from('news')
       .select('*')
@@ -63,7 +63,7 @@ export async function getNewsBySlug(slug: string): Promise<NewsArticle | null> {
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     const { data } = await supabase
       .from('products')
       .select('*')
@@ -78,7 +78,7 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     const { data } = await supabase
       .from('products')
       .select('*')
