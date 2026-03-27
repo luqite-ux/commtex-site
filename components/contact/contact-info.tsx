@@ -3,34 +3,40 @@
 import { useEffect, useRef, useState } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
+import { useContactSettings } from "@/lib/hooks/use-contact-settings";
 
 export function ContactInfo() {
   const { t } = useI18n();
+  const { contact } = useContactSettings();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // 将地址拆分为多行显示
+  const addressLines = contact.address.split(", ").reduce((acc: string[], part, i, arr) => {
+    if (i === 0) return [part];
+    if (i === 1) return [acc[0] + ", " + part];
+    if (i === arr.length - 1) return [...acc, part];
+    return [...acc.slice(0, -1), acc[acc.length - 1] + ", " + part];
+  }, []);
 
   const contactDetails = [
     {
       icon: MapPin,
       titleKey: "contact.info.location",
-      details: [
-        "Building B, No.16 Shuanghong Road",
-        "Haizhou Street, Haining City",
-        "Jiaxing, Zhejiang, China",
-      ],
+      details: addressLines.length > 0 ? addressLines : [contact.address],
       link: null,
     },
     {
       icon: Phone,
       titleKey: "contact.info.phone",
-      details: ["+86 198 8490 0913"],
-      link: "tel:+8619884900913",
+      details: [contact.phone],
+      link: `tel:${contact.phone.replace(/\s/g, "")}`,
     },
     {
       icon: Mail,
       titleKey: "contact.info.email",
-      details: ["commtex@gocommtex.com"],
-      link: "mailto:commtex@gocommtex.com",
+      details: [contact.email],
+      link: `mailto:${contact.email}`,
     },
     {
       icon: Clock,

@@ -4,9 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
+import { useContactSettings } from "@/lib/hooks/use-contact-settings";
 
 export function Footer() {
   const { t } = useI18n();
+  const { contact } = useContactSettings();
   return (
     <footer className="bg-foreground text-background">
       <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-24">
@@ -75,25 +77,25 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-background/70 mt-0.5 shrink-0" />
                 <span className="text-background/70 text-sm">
-                  Building B, No.16 Shuanghong Road, Haizhou Street, Haining City, Jiaxing, Zhejiang, China
+                  {contact.address}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-background/70 shrink-0" />
                 <a
-                  href="tel:+8619884900913"
+                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
                   className="text-background/70 text-sm transition-colors duration-300 hover:text-background"
                 >
-                  +86 198 8490 0913
+                  {contact.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-background/70 shrink-0" />
                 <a
-                  href="mailto:commtex@gocommtex.com"
+                  href={`mailto:${contact.email}`}
                   className="text-background/70 text-sm transition-colors duration-300 hover:text-background"
                 >
-                  commtex@gocommtex.com
+                  {contact.email}
                 </a>
               </li>
             </ul>
@@ -104,7 +106,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-background/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-background/50 text-sm">
-              &copy; {new Date().getFullYear()} Companion Matrix Textile Technology Co., Ltd. {t("footer.copyright")}
+              {contact.copyright || `© ${new Date().getFullYear()} Companion Matrix Textile Technology Co., Ltd. ${t("footer.copyright")}`}
             </p>
             <p className="text-background/50 text-sm">
               Premium Natural Fiber Fabrics Since 2007
