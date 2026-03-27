@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/client'
 import { AdminSidebar } from '@/components/admin/sidebar'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Loader2 } from 'lucide-react'
 
 export default function ContactSettings() {
   const [user, setUser] = useState<any>(null)
@@ -18,6 +19,7 @@ export default function ContactSettings() {
     copyright: '',
   })
   const [saving, setSaving] = useState(false)
+  const [loading, setLoading] = useState(true)
   const router = useRouter()
   const supabase = createClient()
 
@@ -28,6 +30,39 @@ export default function ContactSettings() {
       setUser(currentUser)
     }
     fetchUser()
+  }, [])
+
+  // 从数据库加载现有的联系信息
+  useEffect(() => {
+    const fetchContactSettings = async () => {
+      setLoading(true)
+      try {
+        const { data, error } = await supabase
+          .from('settings')
+          .select('value')
+          .eq('key', 'contact')
+          .single()
+
+        if (error) {
+          console.error('Fetch settings error:', error)
+        } else if (data && data.value) {
+          // 确保所有字段都有值，即使数据库中没有
+          setContact({
+            phone: data.value.phone || '',
+            email: data.value.email || '',
+            address: data.value.address || '',
+            wechat: data.value.wechat || '',
+            whatsapp: data.value.whatsapp || '',
+            copyright: data.value.copyright || '',
+          })
+        }
+      } catch (error) {
+        console.error('Fetch settings error:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchContactSettings()
   }, [])
 
   const handleSave = async () => {
@@ -71,6 +106,13 @@ export default function ContactSettings() {
               <CardTitle>联系信息</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+                  <span className="ml-2 text-gray-500">正在加载现有设置...</span>
+                </div>
+              ) : (
+                <>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   电话
@@ -156,6 +198,8 @@ export default function ContactSettings() {
               >
                 {saving ? '保存中...' : '保存设置'}
               </Button>
+              </>
+              )}
             </CardContent>
           </Card>
         </main>
