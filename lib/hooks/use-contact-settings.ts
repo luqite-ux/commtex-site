@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 // 默认的联系信息（与数据库初始值一致）
 const defaultContact = {
   phone: "+86 198 8490 0913",
-  email: "commtex@gocommtex.com",
+  email: "info@gocommtex.com",
   address: "Building B, No.16 Shuanghong Road, Haizhou Street, Haining City, Jiaxing, Zhejiang, China",
   wechat: "commtex_official",
   whatsapp: "+86 198 8490 0913",

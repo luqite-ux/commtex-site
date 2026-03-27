@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
+import { useContactSettings } from "@/lib/hooks/use-contact-settings";
 
 export function CTASection() {
   const { t } = useI18n();
+  const { contact } = useContactSettings();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -60,7 +62,7 @@ export function CTASection() {
               />
             </Link>
             <a
-              href="mailto:commtex@gocommtex.com"
+              href={`mailto:${contact.email}`}
               className="inline-flex items-center justify-center gap-2 border border-foreground text-foreground px-8 py-4 text-sm uppercase tracking-widest transition-all duration-300 hover:bg-foreground hover:text-background"
             >
               <Mail size={16} />
@@ -74,18 +76,18 @@ export function CTASection() {
             }`}
           >
             <a
-              href="tel:+8619884900913"
+              href={`tel:${contact.phone.replace(/\s/g, "")}`}
               className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-foreground"
             >
               <Phone size={16} />
-              <span>+86 198 8490 0913</span>
+              <span>{contact.phone}</span>
             </a>
             <a
-              href="mailto:commtex@gocommtex.com"
+              href={`mailto:${contact.email}`}
               className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-foreground"
             >
               <Mail size={16} />
-              <span>commtex@gocommtex.com</span>
+              <span>{contact.email}</span>
             </a>
           </div>
         </div>

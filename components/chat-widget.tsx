@@ -73,19 +73,19 @@ export function ChatWidget() {
 
       if (lowerText.includes("sample")) {
         response =
-          "We'd be happy to send you fabric samples! Please email us at commtex@gocommtex.com with your requirements and shipping address, and we'll arrange the samples for you.";
+          "We'd be happy to send you fabric samples! Please email us at info@gocommtex.com with your requirements and shipping address, and we'll arrange the samples for you.";
       } else if (lowerText.includes("fabric") || lowerText.includes("product")) {
         response =
           "We specialize in premium natural fiber fabrics including wool, cashmere, yak hair, alpaca, and silk blends. Our products are perfect for high-end autumn/winter clothing. Would you like to visit our Products page or request specific samples?";
       } else if (lowerText.includes("quote") || lowerText.includes("price")) {
         response =
-          "For a detailed quote, please contact us directly at commtex@gocommtex.com or call +86 19884900913. Please include your fabric requirements, quantity, and any specific specifications.";
+          "For a detailed quote, please contact us directly at info@gocommtex.com or call +86 19884900913. Please include your fabric requirements, quantity, and any specific specifications.";
       } else if (lowerText.includes("contact")) {
         response =
-          "You can reach us at:\n\nEmail: commtex@gocommtex.com\nPhone: +86 19884900913\n\nOur office is located at Building B, No. 16 Shuanghong Road, Haizhou Street, Haining, Jiaxing, Zhejiang, China.";
+          "You can reach us at:\n\nEmail: info@gocommtex.com\nPhone: +86 19884900913\n\nOur office is located at Building B, No. 16 Shuanghong Road, Haizhou Street, Haining, Jiaxing, Zhejiang, China.";
       } else {
         response =
-          "Thank you for your message! For specific inquiries, please email us at commtex@gocommtex.com or call +86 19884900913. Our team will be happy to assist you with fabric samples, quotes, or any questions about our products.";
+          "Thank you for your message! For specific inquiries, please email us at info@gocommtex.com or call +86 19884900913. Our team will be happy to assist you with fabric samples, quotes, or any questions about our products.";
       }
 
       const botMessage: Message = {
@@ -224,7 +224,7 @@ export function ChatWidget() {
         {/* Contact Options */}
         <div className="px-4 py-3 border-t border-border bg-muted/30 flex items-center justify-center gap-6">
           <a
-            href="mailto:commtex@gocommtex.com"
+            href="mailto:info@gocommtex.com"
             className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
             <Mail size={14} />
