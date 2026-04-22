@@ -289,6 +289,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     
     "faq.q12": "What certifications do your fabrics have?",
     "faq.a12": "Our fabrics and facilities hold several important certifications:\n- GRS (Global Recycled Standard) for sustainable practices\n- BSCI for social compliance and ethical manufacturing\n- RWS (Responsible Wool Standard) for animal welfare\nThese certifications ensure our products meet international standards for quality, sustainability, and ethical production.",
+
+    // Brands Section
+    "brands.label": "OUR BRANDS",
+    "brands.title": "Domestic Partner Brands",
+    "brands.subtitle": "Our trusted domestic brand partners, providing premium natural fiber fabric solutions",
+    "brands.zhiji.desc": "With over 20 years of deep expertise in textiles, ZHIJI combines a seasoned foundation with youthful energy. Specializing in natural fiber R&D from both animal and plant sources, we continuously innovate and rapidly iterate to provide customized services for brand owners and designers. Our young, professional team understands fabric parameters and fashion aesthetics, offering market-competitive selection advice from the client's perspective. We are not just your supplier, but your companion on the entrepreneurial journey - working alongside you to co-create fashion and grow with your brand.",
   },
 
   de: {
@@ -562,6 +568,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     "faq.a11": "Ja, wir bieten Musterkarten, Schnittmuster und Meterware für Tests an.",
     "faq.q12": "Welche Zertifizierungen haben Ihre Stoffe?",
     "faq.a12": "Unsere Stoffe haben GRS, BSCI und RWS Zertifizierungen für Qualität, Nachhaltigkeit und ethische Produktion.",
+
+    // Brands Section
+    "brands.label": "UNSERE MARKEN",
+    "brands.title": "Inländische Partnermarken",
+    "brands.subtitle": "Unsere vertrauenswürdigen inländischen Markenpartner, die Premium-Naturfaserstofflösungen anbieten",
+    "brands.zhiji.desc": "Mit über 20 Jahren tiefgreifender Textilexpertise kombiniert ZHIJI eine erfahrene Basis mit jugendlicher Energie. Spezialisiert auf Naturfaser-F&E aus tierischen und pflanzlichen Quellen, innovieren wir kontinuierlich und bieten maßgeschneiderte Dienstleistungen für Markeninhaber und Designer. Unser junges, professionelles Team versteht Stoffparameter und Modeästhetik und bietet wettbewerbsfähige Auswahlberatung. Wir sind nicht nur Ihr Lieferant, sondern Ihr Begleiter auf der unternehmerischen Reise.",
   },
 
   es: {
@@ -835,6 +847,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     "faq.a11": "Sí, proporcionamos tarjetas de muestras, muestras de corte y metraje para pruebas.",
     "faq.q12": "¿Qué certificaciones tienen sus telas?",
     "faq.a12": "Nuestras telas tienen certificaciones GRS, BSCI y RWS.",
+
+    // Brands Section
+    "brands.label": "NUESTRAS MARCAS",
+    "brands.title": "Marcas Asociadas Nacionales",
+    "brands.subtitle": "Nuestros socios de marca nacionales de confianza, proporcionando soluciones premium de telas de fibra natural",
+    "brands.zhiji.desc": "Con más de 20 años de profunda experiencia en textiles, ZHIJI combina una base sólida con energía juvenil. Especializados en I+D de fibras naturales de fuentes animales y vegetales, innovamos continuamente para proporcionar servicios personalizados a propietarios de marcas y diseñadores. Nuestro equipo joven y profesional comprende los parámetros de telas y la estética de la moda. No somos solo su proveedor, sino su compañero en el viaje empresarial.",
   },
 
   fr: {
@@ -1108,6 +1126,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     "faq.a11": "Oui, nous fournissons des cartes d'échantillons, des échantillons de coupe et du métrage pour les tests.",
     "faq.q12": "Quelles certifications ont vos tissus?",
     "faq.a12": "Nos tissus ont les certifications GRS, BSCI et RWS.",
+
+    // Brands Section
+    "brands.label": "NOS MARQUES",
+    "brands.title": "Marques Partenaires Nationales",
+    "brands.subtitle": "Nos partenaires de marque nationaux de confiance, offrant des solutions premium de tissus en fibres naturelles",
+    "brands.zhiji.desc": "Avec plus de 20 ans d'expertise textile approfondie, ZHIJI combine une base expérimentée avec une énergie jeune. Spécialisés dans la R&D de fibres naturelles d'origines animales et végétales, nous innovons continuellement pour fournir des services sur mesure aux propriétaires de marques et aux designers. Notre équipe jeune et professionnelle comprend les paramètres des tissus et l'esthétique de la mode. Nous ne sommes pas seulement votre fournisseur, mais votre compagnon dans le voyage entrepreneurial.",
   },
 
   ar: {
@@ -1165,7 +1189,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.hero.subtitle": "شركة متكاملة في البحث والإنتاج والمبيعات تعمل في مجال أقمشة ملابس الخريف والشتاء منذ 18 عامًا",
     "about.story.label": "من نحن",
     "about.story.title": "شركة جياشينغ كومبانيون ماتريكس تكستايل تكنولوجي المحدودة",
-    "about.story.p1": "شركة متكاملة في البحث والإنتاج والمبيعات تعمل في مجال أقمشة ملابس الخريف والشتاء منذ 18 عامًا.",
+    "about.story.p1": "شركة متكاملة في البحث والإنتاج وا��مبيعات تعمل في مجال أقمشة ملابس الخريف والشتاء منذ 18 عامًا.",
     "about.story.p2": "مسترشدين بقيمنا الأساسية \"الناس أولاً، التركيز على العميل\"، نحن شريك موثوق لماركات الملابس العالمية. نجمع بين الفخامة الدافئة الطبيعية للألياف النادرة - الصوف والكشمير والألبكة والياك وحرير التوت - مع خدمات مهنية شاملة.",
     "about.story.p3": "منشأتنا الحديثة البالغة 10,000 متر مربع، المدعومة بشبكة منسقة من المصانع الشريكة، تضمن جودة موثوقة وتسليم فعال.",
     "about.story.mission": "التزامنا",
@@ -1198,7 +1222,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Products Page
     "productsPage.hero.label": "مجموعتنا",
     "productsPage.hero.title": "أقمشة الألياف الطبيعية الفاخرة",
-    "productsPage.hero.subtitle": "اكتشف مجموعتنا المنتقاة من أقمشة الصوف والكشمير والياك والحرير الفاخرة",
+    "productsPage.hero.subtitle": "اكتشف مجموعتنا ��لمنتقاة من أقمشة الصوف والكشمير والياك والحرير الفاخرة",
     "productsPage.filter.all": "الكل",
     "productsPage.featured": "مميز",
     "productsPage.features.label": "لماذا أقمشتنا",
@@ -1381,5 +1405,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "faq.a11": "نعم، نقدم بطاقات عينات وعينات قص ومتراج للاختبار.",
     "faq.q12": "ما هي الشهادات التي تحملها أقمشتكم؟",
     "faq.a12": "أقمشتنا حاصلة على شهادات GRS و BSCI و RWS.",
+
+    // Brands Section
+    "brands.label": "علاماتنا التجارية",
+    "brands.title": "العلامات التجارية الشريكة المحلية",
+    "brands.subtitle": "شركاؤنا الموثوقون من العلامات التجارية المحلية، الذين يقدمون حلول أقمشة الألياف الطبيعية الفاخرة",
+    "brands.zhiji.desc": "مع أكثر من 20 عاماً من الخبرة العميقة في صناعة النسيج، تجمع ZHIJI بين الأساس المتين والطاقة الشبابية. متخصصون في البحث والتطوير للألياف الطبيعية من مصادر حيوانية ونباتية، نواصل الابتكار لتقديم خدمات مخصصة لأصحاب العلامات التجارية والمصممين. فريقنا الشاب والمحترف يفهم معايير الأقمشة وجماليات الموضة. لسنا مجرد موردين، بل رفقاء في رحلتكم الريادية.",
   },
 };

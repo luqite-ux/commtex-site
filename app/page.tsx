@@ -10,6 +10,7 @@ import { ProcessSection } from "@/components/home/process-section";
 import { StatsSection } from "@/components/home/stats-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { CertificationsSection } from "@/components/home/certifications-section";
+import { BrandsSection } from "@/components/home/brands-section";
 import { NewsPreview } from "@/components/home/news-preview";
 import { CTASection } from "@/components/home/cta-section";
 
@@ -25,6 +26,7 @@ export default function HomePage() {
       <StatsSection />
       <TestimonialsSection />
       <CertificationsSection />
+      <BrandsSection />
       <NewsPreview />
       <CTASection />
       <Footer />
