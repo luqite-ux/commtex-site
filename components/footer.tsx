@@ -18,11 +18,11 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <Link href="/" className="inline-block">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo-footer.png"
                   alt="Commtex - Companion Matrix Textile"
                   width={160}
                   height={64}
-                  className="h-12 w-auto"
+                  className="h-12 w-auto invert"
                   priority
                 />
               </Link>
