@@ -6,9 +6,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { getNewsArticleBySlug } from "@/lib/news-data";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { notFound } from "next/navigation";
+import useSWR from "swr";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 // Simple markdown-like content renderer
 function renderContent(content: string, images?: { src: string; alt: string; caption: string }[]) {
@@ -155,16 +156,41 @@ function renderContent(content: string, images?: { src: string; alt: string; cap
 export default function NewsArticlePage() {
   const params = useParams();
   const slug = params.slug as string;
-  const article = getNewsArticleBySlug(slug);
+  const { data: article, isLoading } = useSWR(`/api/news/${slug}`, fetcher);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   useEffect(() => {
-    setIsVisible(true);
-  }, []);
+    if (article) {
+      setIsVisible(true);
+    }
+  }, [article]);
+
+  if (isLoading) {
+    return (
+      <main className="min-h-screen bg-background">
+        <Header />
+        <div className="pt-32 pb-16 flex items-center justify-center">
+          <div className="text-muted-foreground">Loading...</div>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
 
   if (!article) {
-    notFound();
+    return (
+      <main className="min-h-screen bg-background">
+        <Header />
+        <div className="pt-32 pb-16 flex flex-col items-center justify-center">
+          <h1 className="text-2xl font-serif text-foreground mb-4">Article Not Found</h1>
+          <Link href="/news" className="text-accent hover:underline">
+            Back to News
+          </Link>
+        </div>
+        <Footer />
+      </main>
+    );
   }
 
   return (
