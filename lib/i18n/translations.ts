@@ -88,6 +88,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.cta.subtitle": "Join hundreds of global fashion brands who trust Commtex for their premium fabric needs.",
     "about.cta.button": "Get In Touch",
 
+    // About Brand Section - ZHIJI
+    "about.brand.label": "OUR DOMESTIC BRAND",
+    "about.brand.title": "ZHIJI - Natural Fiber Excellence",
+    "about.brand.p1": "Carefully selecting animal fibers and natural cotton, linen, and silk fabrics, combining the natural breathability of cotton, linen, and silk with the premium luster of wool-silk blends. Our categories span fine spinning, coarse spinning, and imported fabrics in diverse series, embracing a minimalist and innovative design philosophy that restores the authentic texture of nature - comfortable enough to wear next to skin!",
+    "about.brand.p2": "Starting from eco-friendly materials, we showcase the soft touch and durability of fabrics to meet the quality demands of high-end women's wear. Precisely capturing autumn-winter fashion trends, our garment collections stand out with greater recognition and value.",
+    "about.brand.philosophy.label": "OUR PHILOSOPHY",
+    "about.brand.philosophy.title": "Growing Together",
+    "about.brand.p3": "With over 20 years of hands-on textile experience, our team combines deep industry knowledge with youthful energy. Focused on R&D of natural fibers from both animal and plant sources, we continuously innovate and rapidly iterate, providing customized services for brand owners and designers to co-create success.",
+    "about.brand.p4": "We are not just your supplier - we are your entrepreneurial companion, your behind-the-scenes designer, co-creating the future of fashion and growing alongside you and your brand. Walking together with open hearts, creating shared value, achieving long-term symbiosis with brands.",
+    "about.brand.years": "Years of Expertise",
+    "about.brand.yearsDesc": "Deep textile industry experience",
+    "about.brand.quote": "\"We walk together with open hearts, creating shared value, achieving long-term symbiosis with brands.\"",
+
     // Products Page
     "productsPage.hero.label": "OUR COLLECTION",
     "productsPage.hero.title": "Premium Natural Fiber Fabrics",
@@ -376,6 +389,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.cta.subtitle": "Schließen Sie sich Hunderten von globalen Modemarken an, die Commtex vertrauen.",
     "about.cta.button": "Kontakt aufnehmen",
 
+    // About Brand Section - ZHIJI
+    "about.brand.label": "UNSERE INLANDSMARKE",
+    "about.brand.title": "ZHIJI - Naturfaser-Exzellenz",
+    "about.brand.p1": "Sorgfältige Auswahl von Tierfasern und natürlichen Baumwoll-, Leinen- und Seidenstoffen, die die natürliche Atmungsaktivität von Baumwolle, Leinen und Seide mit dem edlen Glanz von Woll-Seiden-Mischungen verbinden. Eine minimalistische und innovative Designphilosophie, die die authentische Textur der Natur wiederherstellt.",
+    "about.brand.p2": "Ausgehend von umweltfreundlichen Materialien zeigen wir die weiche Haptik und Langlebigkeit von Stoffen, um den Qualitätsansprüchen hochwertiger Damenmode gerecht zu werden. Wir erfassen präzise Herbst-Winter-Modetrends.",
+    "about.brand.philosophy.label": "UNSERE PHILOSOPHIE",
+    "about.brand.philosophy.title": "Gemeinsam Wachsen",
+    "about.brand.p3": "Mit über 20 Jahren praktischer Textilerfahrung kombiniert unser Team tiefes Branchenwissen mit jugendlicher Energie. Wir konzentrieren uns auf die F&E natürlicher Fasern und bieten maßgeschneiderte Dienstleistungen für Markeninhaber und Designer.",
+    "about.brand.p4": "Wir sind nicht nur Ihr Lieferant - wir sind Ihr unternehmerischer Begleiter, der mit Ihnen und Ihrer Marke wächst. Gemeinsam schaffen wir Werte und erreichen eine langfristige Symbiose mit Marken.",
+    "about.brand.years": "Jahre Expertise",
+    "about.brand.yearsDesc": "Tiefe Textilbranchenerfahrung",
+    "about.brand.quote": "\"Wir gehen gemeinsam mit offenen Herzen, schaffen gemeinsame Werte, erreichen langfristige Symbiose mit Marken.\"",
+
     // Products Page
     "productsPage.hero.label": "UNSERE KOLLEKTION",
     "productsPage.hero.title": "Premium Naturfaserstoffe",
@@ -648,6 +674,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.cta.title": "Asóciese con nosotros",
     "about.cta.subtitle": "Únase a cientos de marcas de moda globales que confían en Commtex.",
     "about.cta.button": "Ponerse en contacto",
+
+    // About Brand Section - ZHIJI
+    "about.brand.label": "NUESTRA MARCA NACIONAL",
+    "about.brand.title": "ZHIJI - Excelencia en Fibras Naturales",
+    "about.brand.p1": "Selección cuidadosa de fibras animales y tejidos naturales de algodón, lino y seda, combinando la transpirabilidad natural con el brillo premium de las mezclas de lana y seda. Una filosofía de diseño minimalista e innovadora que restaura la textura auténtica de la naturaleza.",
+    "about.brand.p2": "Partiendo de materiales ecológicos, mostramos el tacto suave y la durabilidad de los tejidos para satisfacer las demandas de calidad de la moda femenina de alta gama. Capturando con precisión las tendencias de moda otoño-invierno.",
+    "about.brand.philosophy.label": "NUESTRA FILOSOFÍA",
+    "about.brand.philosophy.title": "Creciendo Juntos",
+    "about.brand.p3": "Con más de 20 años de experiencia textil práctica, nuestro equipo combina un profundo conocimiento de la industria con energía juvenil. Nos enfocamos en I+D de fibras naturales y ofrecemos servicios personalizados para propietarios de marcas y diseñadores.",
+    "about.brand.p4": "No somos solo su proveedor - somos su compañero emprendedor, creciendo junto a usted y su marca. Caminando juntos con corazones abiertos, creando valor compartido, logrando una simbiosis a largo plazo con las marcas.",
+    "about.brand.years": "Años de Experiencia",
+    "about.brand.yearsDesc": "Profunda experiencia en la industria textil",
+    "about.brand.quote": "\"Caminamos juntos con corazones abiertos, creando valor compartido, logrando simbiosis a largo plazo con las marcas.\"",
 
     // Products Page
     "productsPage.hero.label": "NUESTRA COLECCIÓN",
@@ -922,6 +961,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.cta.subtitle": "Rejoignez des centaines de marques de mode mondiales qui font confiance à Commtex.",
     "about.cta.button": "Nous contacter",
 
+    // About Brand Section - ZHIJI
+    "about.brand.label": "NOTRE MARQUE NATIONALE",
+    "about.brand.title": "ZHIJI - Excellence des Fibres Naturelles",
+    "about.brand.p1": "Sélection minutieuse de fibres animales et de tissus naturels en coton, lin et soie, combinant la respirabilité naturelle avec l'éclat premium des mélanges laine-soie. Une philosophie de design minimaliste et innovante qui restaure la texture authentique de la nature.",
+    "about.brand.p2": "En partant de matériaux écologiques, nous mettons en valeur le toucher doux et la durabilité des tissus pour répondre aux exigences de qualité de la mode féminine haut de gamme. Capturant avec précision les tendances mode automne-hiver.",
+    "about.brand.philosophy.label": "NOTRE PHILOSOPHIE",
+    "about.brand.philosophy.title": "Grandir Ensemble",
+    "about.brand.p3": "Avec plus de 20 ans d'expérience textile pratique, notre équipe combine une connaissance approfondie de l'industrie avec une énergie jeune. Nous nous concentrons sur la R&D des fibres naturelles et offrons des services personnalisés aux propriétaires de marques et designers.",
+    "about.brand.p4": "Nous ne sommes pas seulement votre fournisseur - nous sommes votre compagnon entrepreneurial, grandissant à vos côtés et avec votre marque. Marchant ensemble avec des cœurs ouverts, créant une valeur partagée, réalisant une symbiose à long terme avec les marques.",
+    "about.brand.years": "Années d'Expertise",
+    "about.brand.yearsDesc": "Expérience approfondie de l'industrie textile",
+    "about.brand.quote": "\"Nous marchons ensemble avec des cœurs ouverts, créant une valeur partagée, réalisant une symbiose à long terme avec les marques.\"",
+
     // Products Page
     "productsPage.hero.label": "NOTRE COLLECTION",
     "productsPage.hero.title": "Tissus en Fibres Naturelles Premium",
@@ -1194,6 +1246,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.cta.title": "كن شريكًا معنا",
     "about.cta.subtitle": "انضم إلى مئات من ماركات الأزياء العالمية التي تثق في كومتكس.",
     "about.cta.button": "تواصل معنا",
+
+    // About Brand Section - ZHIJI
+    "about.brand.label": "علامتنا التجارية المحلية",
+    "about.brand.title": "ZHIJI - تميز الألياف الطبيعية",
+    "about.brand.p1": "اختيار دقيق للألياف الحيوانية والأقمشة الطبيعية من القطن والكتان والحرير، تجمع بين التهوية الطبيعية واللمعان الفاخر لمزيج الصوف والحرير. فلسفة تصميم بسيطة ومبتكرة تستعيد الملمس الأصيل للطبيعة.",
+    "about.brand.p2": "انطلاقًا من المواد الصديقة للبيئة، نعرض الملمس الناعم والمتانة للأقمشة لتلبية متطلبات الجودة للأزياء النسائية الراقية. نلتقط بدقة اتجاهات موضة الخريف والشتاء.",
+    "about.brand.philosophy.label": "فلسفتنا",
+    "about.brand.philosophy.title": "النمو معًا",
+    "about.brand.p3": "مع أكثر من 20 عامًا من الخبرة العملية في صناعة النسيج، يجمع فريقنا بين المعرفة العميقة بالصناعة والطاقة الشبابية. نركز على البحث والتطوير للألياف الطبيعية ونقدم خدمات مخصصة لأصحاب العلامات التجارية والمصممين.",
+    "about.brand.p4": "لسنا مجرد موردين - نحن رفقاء في رحلتكم الريادية، ننمو معكم ومع علامتكم التجارية. نسير معًا بقلوب مفتوحة، نخلق قيمة مشتركة، نحقق تعايشًا طويل المدى مع العلامات التجارية.",
+    "about.brand.years": "سنوات من الخبرة",
+    "about.brand.yearsDesc": "خبرة عميقة في صناعة النسيج",
+    "about.brand.quote": "\"نسير معًا بقلوب مفتوحة، نخلق قيمة مشتركة، نحقق تعايشًا طويل المدى مع العلامات التجارية.\"",
 
     // Products Page
     "productsPage.hero.label": "مجموعتنا",
