@@ -15,16 +15,26 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block">
+            <div className="flex items-center gap-4">
+              <Link href="/" className="inline-block">
+                <Image
+                  src="/images/logo.png"
+                  alt="Commtex - Companion Matrix Textile"
+                  width={160}
+                  height={64}
+                  className="h-12 w-auto"
+                  priority
+                />
+              </Link>
+              <div className="w-px h-10 bg-background/30" />
               <Image
-                src="/images/logo.png"
-                alt="Commtex - Companion Matrix Textile"
-                width={200}
-                height={80}
-                className="h-16 w-auto"
-                priority
+                src="/images/brands/zhiji-logo.png"
+                alt="ZHIJI - 知集"
+                width={160}
+                height={64}
+                className="h-12 w-auto"
               />
-            </Link>
+            </div>
             <p className="mt-6 text-background/70 text-sm leading-relaxed">
               {t("footer.description")}
             </p>
