@@ -10,6 +10,8 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Industry Insights | Commtex ",
   description: "Stay updated with the latest news, events, and announcements from Commtex - your trusted partner in premium natural fiber fabrics.",
+  alternates: { canonical: '/news' },
+  openGraph: { title: 'Industry Insights | Commtex', description: 'News and insights from Commtex natural fiber fabrics.', url: '/news', type: 'website' },
 };
 
 export default async function NewsPage() {
