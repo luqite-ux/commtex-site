@@ -6,11 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ZoomIn } from "lucide-react";
-import { products as realProducts } from "@/lib/products-data";
+import type { Product } from "@/lib/products-data";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
 
 // Transform real products to display format
-const allProducts = realProducts.map((p) => ({
+const toDisplayProducts = (realProducts: Product[]) => realProducts.map((p) => ({
   name: p.name,
   category: p.category,
   description: p.features[0]?.content || "",
@@ -21,7 +21,8 @@ const allProducts = realProducts.map((p) => ({
   articleNumber: p.articleNumber,
 }));
 
-export function ProductsGrid() {
+export function ProductsGrid({ sourceProducts }: { sourceProducts: Product[] }) {
+  const allProducts = toDisplayProducts(sourceProducts);
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -91,16 +92,12 @@ export function ProductsGrid() {
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product, index) => {
-            const hasDetailPage = "slug" in product && product.slug;
-            const ProductWrapper = hasDetailPage ? Link : "div";
-            const wrapperProps = hasDetailPage 
-              ? { href: `/products/${product.slug}` }
-              : {};
+            const hasDetailPage = Boolean(product.slug);
 
             return (
-              <ProductWrapper
+              <Link
                 key={product.name}
-                {...wrapperProps}
+                href={`/products/${product.slug}`}
                 className={`group bg-card border border-border rounded-lg overflow-hidden transition-all duration-700 hover:shadow-xl hover:border-accent/30 ${hasDetailPage ? "cursor-pointer" : ""} ${
                   isVisible
                     ? "opacity-100 translate-y-0"
@@ -176,7 +173,7 @@ export function ProductsGrid() {
                     ))}
                   </div>
                 </div>
-              </ProductWrapper>
+              </Link>
             );
           })}
         </div>

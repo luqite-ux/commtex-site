@@ -4,14 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import useSWR from "swr";
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-export function NewsList() {
+export function NewsList({ articles }: { articles: any[] }) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { data: articles = [] } = useSWR("/api/news", fetcher);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

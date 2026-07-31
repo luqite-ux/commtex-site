@@ -11,6 +11,7 @@ export function ContactForm() {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
@@ -42,15 +43,12 @@ export function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after delay
-    setTimeout(() => {
-      setIsSubmitted(false);
+    setSubmitError("");
+    try {
+      const response = await fetch('/api/inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || 'Submission failed. Please try again.');
+      setIsSubmitted(true);
       setFormData({
         name: "",
         email: "",
@@ -58,7 +56,11 @@ export function ContactForm() {
         subject: "",
         message: "",
       });
-    }, 3000);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Submission failed. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -96,6 +98,7 @@ export function ContactForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
+          {submitError && <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">{submitError}</p>}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label

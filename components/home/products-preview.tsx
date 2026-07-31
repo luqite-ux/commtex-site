@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { products as allProducts } from "@/lib/products-data";
+import type { Product } from "@/lib/products-data";
 import { useI18n } from "@/lib/i18n/context";
 
 // Get first 4 real products for homepage preview
-const products = allProducts.slice(0, 4).map((p) => ({
+const toPreview = (allProducts: Product[]) => allProducts.slice(0, 4).map((p) => ({
   name: p.name,
   description: p.features[0]?.content?.slice(0, 80) + "..." || "",
   image: p.mainImage,
@@ -16,7 +16,8 @@ const products = allProducts.slice(0, 4).map((p) => ({
   articleNumber: p.articleNumber,
 }));
 
-export function ProductsPreview() {
+export function ProductsPreview({ sourceProducts }: { sourceProducts: Product[] }) {
+  const products = toPreview(sourceProducts);
   const { t } = useI18n();
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

@@ -5,15 +5,13 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n/context";
 import { ArrowRight, Calendar } from "lucide-react";
-import { newsArticles } from "@/lib/news-data";
-
-export function NewsPreview() {
+export function NewsPreview({ articles }: { articles: any[] }) {
   const { t } = useI18n();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Get latest 3 news articles
-  const latestNews = newsArticles.slice(0, 3);
+  const latestNews = articles.slice(0, 3).map((article) => ({ ...article, coverImage: article.cover_image || article.featured_image }));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
