@@ -1,110 +1,81 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase/client'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { Suspense, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 
-export default function AdminLoginPage() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const router = useRouter()
-  const supabase = createClient()
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setLoading(true)
-
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
-
-      if (error) {
-        setError(error.message)
-      } else {
-        router.push('/admin')
-        router.refresh()
-      }
-    } catch (err) {
-      setError('登录失败，请重试')
-    } finally {
-      setLoading(false)
-    }
-  }
+function LoginForm() {
+  const params = useSearchParams()
+  const [pending, setPending] = useState(false)
+  const reason = params.get('reason')
+  const error = params.get('error')
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-center mb-2 text-[#8B4513]">
-            Admin Dashboard
-          </h1>
-          <p className="text-center text-muted-foreground mb-8">
-            管理后台登录
-          </p>
-
-          {error && (
-            <div className="bg-red-100 text-red-700 px-4 py-3 rounded mb-6">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                邮箱
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@commtex.com"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B4513]"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium mb-2">
-                密码
-              </label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B4513]"
-                required
-              />
-            </div>
-
-            <Button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#8B4513] hover:bg-[#A0522D] text-white"
-            >
-              {loading ? '登录中...' : '登录'}
-            </Button>
-          </form>
-
-          <div className="mt-6 text-center text-sm text-muted-foreground">
-            <p>
-              还没有账户？{' '}
-              <Link href="/admin/sign-up" className="text-[#8B4513] hover:underline">
-                创建账户
-              </Link>
-            </p>
-          </div>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-stone-50 to-amber-50 p-4">
+      <div className="w-full max-w-md rounded-2xl border border-stone-200 bg-white p-8 shadow-lg">
+        <div className="mb-6 text-center">
+          <h1 className="text-2xl font-bold text-stone-900">COMMTEX</h1>
+          <p className="mt-2 text-sm text-stone-600">网站管理后台登录</p>
+          <p className="mt-1 text-xs text-stone-500">登录后将自动进入内容管理后台</p>
         </div>
+
+        {reason === 'unauthorized' && (
+          <p className="mb-4 rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-800">
+            请先登录后再访问管理后台
+          </p>
+        )}
+
+        <form
+          action="/api/auth/login"
+          method="post"
+          className="space-y-4"
+          onSubmit={() => setPending(true)}
+        >
+          {error && (
+            <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
+          )}
+          <div className="space-y-2">
+            <label htmlFor="email" className="text-sm font-medium text-stone-800">
+                邮箱
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none placeholder:text-stone-500 focus:border-amber-700 focus:ring-2 focus:ring-amber-100"
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="password" className="text-sm font-medium text-stone-800">
+                密码
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              className="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none placeholder:text-stone-500 focus:border-amber-700 focus:ring-2 focus:ring-amber-100"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={pending}
+            className="w-full rounded-lg bg-amber-800 px-4 py-2.5 text-sm font-medium text-white hover:bg-amber-900 disabled:opacity-60"
+          >
+            {pending ? '登录中…' : '登录'}
+          </button>
+        </form>
       </div>
     </div>
+  )
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center text-stone-600">加载中…</div>}>
+      <LoginForm />
+    </Suspense>
   )
 }

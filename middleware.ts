@@ -1,12 +1,20 @@
-import { updateSession } from '@/lib/supabase/middleware'
-import { type NextRequest } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
+import { SESSION_COOKIE } from '@/lib/admin-session'
 
-export async function middleware(request: NextRequest) {
-  return await updateSession(request)
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  const isPublic = pathname.startsWith('/admin/login') || pathname.startsWith('/admin/logout')
+
+  if (!isPublic && pathname.startsWith('/admin')) {
+    if (!request.cookies.get(SESSION_COOKIE)?.value) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/admin/login'
+      url.searchParams.set('reason', 'unauthorized')
+      return NextResponse.redirect(url)
+    }
+  }
+
+  return NextResponse.next()
 }
 
-export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
-}
+export const config = { matcher: ['/admin/:path*'] }
