@@ -185,7 +185,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "contact.info.weekdays": "Monday - Friday: 9:00 AM - 6:00 PM",
     "contact.info.saturday": "Saturday: 9:00 AM - 12:00 PM",
     "contact.info.sunday": "Sunday: Closed",
-    "contact.info.quickResponse": "Quick Response Guarantee",
+    "contact.info.quickResponse": "Response Times",
     "contact.info.quickResponseText": "We aim to respond to all inquiries within 24 business hours. For urgent matters, please call us directly.",
     
     // Materials Section
