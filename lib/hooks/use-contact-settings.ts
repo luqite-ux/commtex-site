@@ -10,8 +10,12 @@ const defaultContact = {
   address: "Building B, No.16 Shuanghong Road, Haizhou Street, Haining City, Jiaxing, Zhejiang, China",
   wechat: "commtex_official",
   whatsapp: "+86 198 8490 0913",
-  copyright: "© 2024 Companion Matrix Textile Technology Co., Ltd. All rights reserved.",
+  copyright: `© ${new Date().getFullYear()} Companion Matrix Textile Technology Co., Ltd. All rights reserved.`,
 };
+
+function withCurrentCopyrightYear(copyright: string) {
+  return copyright.replace(/^©\s*\d{4}\b/, `© ${new Date().getFullYear()}`);
+}
 
 export interface ContactSettings {
   phone: string;
@@ -48,7 +52,7 @@ export function useContactSettings() {
             address: data.value.address || defaultContact.address,
             wechat: data.value.wechat || defaultContact.wechat,
             whatsapp: data.value.whatsapp || defaultContact.whatsapp,
-            copyright: data.value.copyright || defaultContact.copyright,
+            copyright: withCurrentCopyrightYear(data.value.copyright || defaultContact.copyright),
           });
         }
       } catch (error) {
