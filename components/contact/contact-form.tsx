@@ -5,6 +5,7 @@ import React from "react"
 import { useState, useEffect, useRef } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
+import { InquiryCaptchaField } from "@/components/inquiry-captcha-field";
 
 export function ContactForm() {
   const { t } = useI18n();
@@ -12,6 +13,7 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [captchaRefreshKey, setCaptchaRefreshKey] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
@@ -41,11 +43,21 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const submitted = new window.FormData(e.currentTarget as HTMLFormElement);
     setIsSubmitting(true);
 
     setSubmitError("");
     try {
-      const response = await fetch('/api/inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          captchaToken: String(submitted.get('captchaToken') || ''),
+          captchaAnswer: String(submitted.get('captchaAnswer') || ''),
+          captchaScope: String(submitted.get('captchaScope') || ''),
+        }),
+      });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error || 'Submission failed. Please try again.');
       setIsSubmitted(true);
@@ -60,6 +72,7 @@ export function ContactForm() {
       setSubmitError(error instanceof Error ? error.message : 'Submission failed. Please try again.');
     } finally {
       setIsSubmitting(false);
+      setCaptchaRefreshKey((value) => value + 1);
     }
   };
 
@@ -199,6 +212,8 @@ export function ContactForm() {
               placeholder="Tell us about your requirements..."
             />
           </div>
+
+          <InquiryCaptchaField refreshKey={captchaRefreshKey} />
 
           <button
             type="submit"

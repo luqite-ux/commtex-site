@@ -16,13 +16,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-4">
-              <Link href="/" className="inline-block">
+              <Link href="/" aria-label="Commtex home" className="inline-block max-w-full rounded bg-white p-1">
                 <Image
                   src="/images/logo-footer.png"
                   alt="Commtex - Companion Matrix Textile"
-                  width={160}
-                  height={64}
-                  className="h-12 w-auto"
+                  width={213}
+                  height={80}
+                  className="h-16 w-auto max-w-full object-contain"
                   priority
                 />
               </Link>
@@ -32,7 +32,7 @@ export function Footer() {
                 alt="ZHIJI - 知集"
                 width={160}
                 height={64}
-                className="h-12 w-auto"
+                className="h-16 w-auto max-w-full object-contain"
               />
             </div>
             <p className="mt-6 text-background/70 text-sm leading-relaxed">
