@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
-import { useContactSettings } from "@/lib/hooks/use-contact-settings";
+import { FOOTER_COMPANY_NAME, useContactSettings } from "@/lib/hooks/use-contact-settings";
 
 export function Footer() {
   const { t } = useI18n();
@@ -116,7 +116,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-background/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-background/50 text-sm">
-              {contact.copyright || `© ${new Date().getFullYear()} Companion Matrix Textile Technology Co., Ltd. ${t("footer.copyright")}`}
+              {contact.copyright || `© ${new Date().getFullYear()} ${FOOTER_COMPANY_NAME} ${t("footer.copyright")}`}
             </p>
             <p className="text-background/50 text-sm">
               Premium Natural Fiber Fabrics Since 2007
