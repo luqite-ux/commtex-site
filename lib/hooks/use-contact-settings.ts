@@ -3,6 +3,12 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
+export const FOOTER_COMPANY_NAME = "Jiaxing Companion Matrix Textile Technology Co., Ltd.";
+
+function footerCopyright() {
+  return `© ${new Date().getFullYear()} ${FOOTER_COMPANY_NAME} All rights reserved.`;
+}
+
 // 默认的联系信息（与数据库初始值一致）
 const defaultContact = {
   phone: "+86 198 8490 0913",
@@ -10,11 +16,11 @@ const defaultContact = {
   address: "Building B, No.16 Shuanghong Road, Haizhou Street, Haining City, Jiaxing, Zhejiang, China",
   wechat: "commtex_official",
   whatsapp: "+86 198 8490 0913",
-  copyright: `© ${new Date().getFullYear()} Companion Matrix Textile Technology Co., Ltd. All rights reserved.`,
+  copyright: footerCopyright(),
 };
 
-function withCurrentCopyrightYear(copyright: string) {
-  return copyright.replace(/^©\s*\d{4}\b/, `© ${new Date().getFullYear()}`);
+function withCurrentCopyrightYear(_copyright: string) {
+  return footerCopyright();
 }
 
 export interface ContactSettings {
